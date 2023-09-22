@@ -10,9 +10,7 @@ file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false ${SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false ${TEST_DIR}/*.cpp)
 file(GLOB_RECURSE INCLUDES LIST_DIRECTORIES false ${INCLUDE_DIR}/*.cpp)
 
-#
 # library with common functions for tests and exe
-#
 add_library(${PROJECT_NAME}_lib
             ${SOURCES}
             ${INCLUDES})
@@ -22,9 +20,7 @@ set_target_properties(${PROJECT_NAME}_lib PROPERTIES
                       CXX_STANDARD_REQUIRED YES
                       CXX_EXTENSIONS NO)
 
-#
 # project itself
-#
 add_executable(${PROJECT_NAME}_exe
                 ${CMAKE_CURRENT_SOURCE_DIR}/run.cpp)
 
@@ -36,10 +32,7 @@ set_target_properties(${PROJECT_NAME}_exe PROPERTIES
 add_dependencies(${PROJECT_NAME}_exe ${PROJECT_NAME}_lib)
 target_link_libraries(${PROJECT_NAME}_exe ${PROJECT_NAME}_lib)
 
-#
 # unit tests
-#
-
 # download googletest
 configure_file(CMakeLists.txt.gtest.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -54,9 +47,6 @@ execute_process(COMMAND ${CMAKE_COMMAND} --build .
 if(result)
   message(FATAL_ERROR "Build step for googletest failed: ${result}")
 endif()
-
-# prevent overriding the parent project's compiler/linker on windows
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # add googletest to build. This defines the gtest and gtest_main targets.
 add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
