@@ -8,7 +8,7 @@ set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false ${SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false ${TEST_DIR}/*.cpp)
-file(GLOB_RECURSE INCLUDES LIST_DIRECTORIES false ${INCLUDE_DIR}/*.cpp)
+file(GLOB_RECURSE INCLUDES LIST_DIRECTORIES false ${INCLUDE_DIR}/*.hpp)
 
 # library with common functions for tests and exe
 add_library(${PROJECT_NAME}_lib
@@ -58,7 +58,7 @@ add_executable(${PROJECT_NAME}_unittests
                )
 
 set_target_properties(${PROJECT_NAME}_unittests PROPERTIES
-                      CXX_STANDARD 17
+                      CXX_STANDARD 20
                       CXX_STANDARD_REQUIRED YES
                       CXX_EXTENSIONS NO)
 
