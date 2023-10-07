@@ -43,7 +43,11 @@ make build
 ```
 make run
 ```
-#### Run tests:
+#### Run twelve tests:
 ```
-make test
+make twelve-tests
+```
+#### Run vector tests:
+```
+make vector-tests
 ```
