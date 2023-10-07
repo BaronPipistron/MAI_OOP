@@ -30,14 +30,10 @@ std::istream
 ```
 
 ### Variant 10:
-```
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-```
+| Фигура №1 | Фигура №2 | Фигура №3 |
+| :---: | :---: | :---: |
+| Квадрат | Прямоугольник | Трапеция |
 
 #### Build:
 ```
