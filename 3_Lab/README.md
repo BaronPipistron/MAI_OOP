@@ -32,9 +32,11 @@ std::istream
 ### Variant 10:
 ```
 
-| Фигура №1 | Фигура №2 | Фигура №3 |
-| :---: | :---: | :---: |
-| Квадрат | Прямоугольник | Трапеция |
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 ```
 
 #### Build:
