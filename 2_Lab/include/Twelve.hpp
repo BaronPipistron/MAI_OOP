@@ -46,7 +46,7 @@ public:
     bool operator>=(const Twelve&) const noexcept;
     bool operator<=(const Twelve&) const noexcept;
 
-    void print();
+    void print() const noexcept;
     friend std::ostream& operator<<(std::ostream&, const Twelve&);
 
 private:

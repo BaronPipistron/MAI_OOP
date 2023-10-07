@@ -292,7 +292,7 @@ bool Twelve::operator<=(const Twelve& other) const noexcept {
     return (*this < other || *this == other);
 }
 
-void Twelve::print() {
+void Twelve::print() const noexcept {
     if (_duodecimal_number.size() == 0) {
         std::cout << '0' << std::endl;
     }
