@@ -44,3 +44,23 @@ make build
 ```
 make run
 ```
+
+#### Run rectangle tests:
+```
+make rectangle-tests
+```
+
+#### Run square tests:
+```
+make square-tests
+```
+
+#### Run trapeze tests:
+```
+make trapeze-tests
+```
+
+### Run vector tests:
+```
+make vector tests
+```
