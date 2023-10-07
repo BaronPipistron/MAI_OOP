@@ -14,11 +14,12 @@ public:
     vector();
     vector(const size_t, const T& = T());
     vector(const std::initializer_list<T>&);
-    inline vector(const std::string&);
     vector(const vector<T>&);
     vector(vector<T>&&) noexcept;
-    vector<T>& operator=(const vector<T>&);
     virtual ~vector() noexcept;
+
+    vector<T>& operator=(const vector<T>&);
+    vector<T>& operator=(vector<T>&&) noexcept;
 
     void reserve(const size_t);
     void resize(const size_t, const T& = T());

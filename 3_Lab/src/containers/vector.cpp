@@ -30,16 +30,6 @@ vector<T>::vector(const std::initializer_list<T>& init_list): vector() {
     _vec_capacity = init_list.size();
 }
 
-template <>
-inline vector<unsigned char>::vector(const std::string& str): vector() {
-    for (char c: str) {
-        push_back(c);
-    }
-
-    _vec_size = str.length();
-    _vec_capacity = str.length();
-}
-
 template <typename T>
 vector<T>::vector(const vector<T>& other_vector): vector() {
     resize(other_vector.size());
@@ -70,6 +60,15 @@ vector<T>& vector<T>::operator=(const vector<T>& right_vector) {
         this->_arr[i].~T();
         new (this->_arr + i) T(right_vector[i]);
     }
+    return *this;
+}
+
+template <typename T>
+vector<T>& vector<T>::operator=(vector<T>&& right_vector) noexcept {
+    this->_vec_size = std::move(other._vec_size);
+    this->_vec_capacity = std::move(other._vec_capacity);
+    this->_arr = std::move(other._arr);
+
     return *this;
 }
 
