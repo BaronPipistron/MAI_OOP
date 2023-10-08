@@ -65,9 +65,9 @@ vector<T>& vector<T>::operator=(const vector<T>& right_vector) {
 
 template <typename T>
 vector<T>& vector<T>::operator=(vector<T>&& right_vector) noexcept {
-    this->_vec_size = std::move(other._vec_size);
-    this->_vec_capacity = std::move(other._vec_capacity);
-    this->_arr = std::move(other._arr);
+    this->_vec_size = std::move(right_vector._vec_size);
+    this->_vec_capacity = std::move(right_vector._vec_capacity);
+    this->_arr = std::move(right_vector._arr);
 
     return *this;
 }
