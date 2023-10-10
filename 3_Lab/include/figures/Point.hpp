@@ -16,7 +16,7 @@ public:
     Point(const Point&) noexcept;
     Point(Point&&) noexcept;
 
-    Point& operator=(const Point) noexcept;
+    Point& operator=(const Point&) noexcept;
     Point& operator=(Point&&) noexcept;
 
     const double get_x_cord() const noexcept;

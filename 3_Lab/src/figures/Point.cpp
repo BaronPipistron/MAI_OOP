@@ -20,7 +20,7 @@ Point::Point(Point&& other) noexcept {
     this->_y = std::move(other._y);
 }
 
-Point& Point::operator=(const Point other) noexcept {
+Point& Point::operator=(const Point& other) noexcept {
     if (this == &other) return *this;
 
     this->_x = other._x;
