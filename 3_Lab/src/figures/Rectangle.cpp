@@ -24,7 +24,7 @@ Rectangle::Rectangle(const Point& left_bottom, const Point& right_bottom,
 
 Rectangle::Rectangle(const double length, const double width) {
     if (length <= 0 || width <= 0) {
-        throw std::invalid_argument("Length and width must be more than zero");
+        throw std::invalid_argument("Length and width of rectangle must be more than zero");
     }
 
     this->_left_bottom = Point(0, 0);
@@ -76,8 +76,8 @@ Rectangle& Rectangle::operator=(Rectangle&& other) noexcept {
 }
 
 figures::Point Rectangle::calculate_geometric_center() const noexcept {
-    Point geometric_center (_left_bottom.get_x_cord() + (_right_bottom.get_x_cord() - _left_bottom.get_x_cord()) / 2,
-                            _left_bottom.get_y_cord() + (_left_top.get_y_cord() - _left_bottom.get_y_cord()) / 2);
+    Point geometric_center ((_right_top.get_x_cord() + _left_bottom.get_x_cord()) / 2,
+                            (_right_top.get_y_cord() + _left_bottom.get_y_cord()) / 2);
     return geometric_center;
 }
 

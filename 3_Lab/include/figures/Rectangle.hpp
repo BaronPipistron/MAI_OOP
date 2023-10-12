@@ -36,8 +36,8 @@ public:
 
     virtual operator double() const override;
 
-    virtual bool operator==(const Rectangle&) const;
-    virtual bool operator!=(const Rectangle&) const;
+    bool operator==(const Rectangle&) const;
+    bool operator!=(const Rectangle&) const;
 
     friend std::istream& operator>>(std::istream&, Rectangle&);
     friend std::ostream& operator<<(std::ostream&, const Rectangle&);

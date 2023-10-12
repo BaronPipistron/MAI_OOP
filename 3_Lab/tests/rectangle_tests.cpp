@@ -112,6 +112,30 @@ TEST(calculate_area_test, calculate_area_test_2) {
     EXPECT_DOUBLE_EQ(test_1.calculate_area(), 50);
 }
 
+TEST(get_lenth_test, get_length_test_1) {
+    Rectangle test_1 (Point(1, 1), Point(10, 1), Point(1, 5), Point(10, 5));
+
+    EXPECT_DOUBLE_EQ(test_1.get_length(), 9);
+}
+
+TEST(get_lenth_test, get_length_test_2) {
+    Rectangle test_1 (4.57, 2.28);
+
+    EXPECT_DOUBLE_EQ(test_1.get_length(), 4.57);
+}
+
+TEST(get_width_test, get_width_test_1) {
+    Rectangle test_1 (Point(1, 1), Point(10, 1), Point(1, 5), Point(10, 5));
+
+    EXPECT_DOUBLE_EQ(test_1.get_width(), 4);
+}
+
+TEST(get_width_test, get_width_test_2) {
+    Rectangle test_1 (4.57, 2.28);
+
+    EXPECT_DOUBLE_EQ(test_1.get_width(), 2.28);
+}
+
 TEST(operator_double_test, operator_double_test_1) {
     Rectangle test_1 (Point(0, 0), Point(2, 0), Point(0,2), Point(2, 2));
     double operator_double_test_val = double(test_1);
@@ -180,6 +204,81 @@ TEST(non_equal_operator_test, false_return_2) {
     Rectangle test_2 (5, 10);
 
     EXPECT_FALSE(test_1 != test_2);
+}
+
+TEST(rotated_rectangle_tests, copy_constructor_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    Rectangle test_2 (test_1);
+
+    EXPECT_TRUE(test_1 == test_2);
+    EXPECT_DOUBLE_EQ(test_1.get_length(), test_2.get_length());
+    EXPECT_DOUBLE_EQ(test_1.get_width(), test_2.get_width());
+}
+
+TEST(rotated_rectangle_tests, move_constructor_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    Rectangle test_2 (std::move(test_1));
+
+    EXPECT_TRUE(test_1 == test_2);
+    EXPECT_DOUBLE_EQ(test_1.get_length(), test_2.get_length());
+    EXPECT_DOUBLE_EQ(test_1.get_width(), test_2.get_width());
+}
+
+TEST(rotated_rectangle_tests, assigment_operator_copy_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    Rectangle test_2 = test_1;
+
+    EXPECT_TRUE(test_1 == test_2);
+    EXPECT_DOUBLE_EQ(test_1.get_length(), test_2.get_length());
+    EXPECT_DOUBLE_EQ(test_1.get_width(), test_2.get_width());
+}
+
+TEST(rotated_rectangle_tests, assigment_operator_move_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    Rectangle test_2 = std::move(test_1);
+
+    EXPECT_TRUE(test_1 == test_2);
+    EXPECT_DOUBLE_EQ(test_1.get_length(), test_2.get_length());
+    EXPECT_DOUBLE_EQ(test_1.get_width(), test_2.get_width());
+}
+
+TEST(rotated_rectangle_tests, calculate_geometric_center_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    Point center_test = test_1.calculate_geometric_center();
+
+    EXPECT_DOUBLE_EQ(center_test.get_x_cord(), 3.5);
+    EXPECT_DOUBLE_EQ(center_test.get_y_cord(), 2.5);
+}
+
+TEST(rotated_rectangle_tests, calculate_perimeter_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+
+    EXPECT_DOUBLE_EQ(test_1.calculate_perimeter(), sqrt(5) * 4);
+}
+
+TEST(rotated_rectangle_tests, calculate_area_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+
+    EXPECT_DOUBLE_EQ(test_1.calculate_area(), 5);
+}
+
+TEST(rotated_rectangle_tests, get_length_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+
+    EXPECT_DOUBLE_EQ(test_1.get_length(), sqrt(5));
+}
+
+TEST(rotated_rectangle_tests, get_width_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+
+    EXPECT_DOUBLE_EQ(test_1.get_width(), sqrt(5));
+}
+
+TEST(rotated_rectangle_tests, operator_double_test) {
+    Rectangle test_1 (Point(2, 2), Point(4, 1), Point(3, 4), Point(5, 3));
+    double operator_double_test_val = double(test_1);
+
+    EXPECT_DOUBLE_EQ(operator_double_test_val, 5);
 }
 
 int main(int argc, char** argv) {

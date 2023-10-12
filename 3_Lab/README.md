@@ -62,5 +62,5 @@ make trapeze-tests
 
 ### Run vector tests:
 ```
-make vector tests
+make vector-tests
 ```
