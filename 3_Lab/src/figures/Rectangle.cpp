@@ -1,5 +1,4 @@
 #include "../../include/figures/Rectangle.hpp"
-#include "Point.cpp"
 
 using namespace figures;
 

@@ -19,7 +19,7 @@ square-tests:
 trapeze-tests:
 	./build/*_trapeze_tests
 
-vector_tests:
+vector-tests:
 	./build/*_vector_tests
 
 clean:

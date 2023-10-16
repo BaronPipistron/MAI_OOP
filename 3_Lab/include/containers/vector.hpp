@@ -31,6 +31,8 @@ public:
     void emplace_back(const Args&...);
     void pop_back();
 
+    void erase(size_t);
+
     T& operator[](size_t);
     T& at(size_t);
     T& front();

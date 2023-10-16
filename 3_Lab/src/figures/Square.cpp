@@ -1,5 +1,4 @@
 #include "../../include/figures/Square.hpp"
-#include "Point.cpp"
 
 using namespace figures;
 

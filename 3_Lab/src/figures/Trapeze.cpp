@@ -1,5 +1,4 @@
 #include "../../include/figures/Trapeze.hpp"
-#include "Point.cpp"
 
 #define EPS 0.000000000001
 

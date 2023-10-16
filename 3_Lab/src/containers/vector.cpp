@@ -45,10 +45,6 @@ vector<T>::vector(vector<T>&& other) noexcept {
     this->_vec_size = std::move(other._vec_size);
     this->_vec_capacity = std::move(other._vec_capacity);
     this->_arr = std::move(other._arr);
-
-    other._vec_size = 0;
-    other._vec_capacity = 1;
-    other._arr = nullptr;
 }
 
 template <typename T>
@@ -174,6 +170,23 @@ void vector<T>::pop_back() {
 
     --_vec_size;
     _arr[_vec_size].~T();
+}
+
+template <typename T>
+void vector<T>::erase(size_t index) {
+    if (index >= _vec_size) throw std::range_error("Index out of range");
+    if (_vec_size == 0) return;
+
+    if (index == _vec_size - 1) {
+        pop_back();
+        return;
+    }
+
+    _arr[index].~T();
+    for (size_t i = index; i != _vec_size - 1; ++i) {
+        _arr[i] = _arr[i + 1];
+    }
+    pop_back();
 }
 
 template <typename T>
