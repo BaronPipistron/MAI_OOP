@@ -62,3 +62,39 @@ void FiguresVector::pop_back() {
 void FiguresVector::erase(size_t index) {
     _vec.erase(index);
 }
+
+Figure* FiguresVector::operator[](size_t index) noexcept {
+    return _vec[index];
+}
+
+Figure* FiguresVector::front() noexcept {
+    return _vec.front();
+}
+
+Figure* FiguresVector::back() noexcept {
+    return _vec.back();
+}
+
+const Figure* FiguresVector::operator[](size_t index) const noexcept {
+    return _vec[index];
+}
+
+const Figure* FiguresVector::front() const noexcept {
+    return _vec.front();
+}
+
+const Figure* FiguresVector::back() const noexcept {
+    return _vec.back();
+}
+
+size_t FiguresVector::size() const noexcept {
+    return _vec.size();
+}
+
+size_t FiguresVector::capacity() const noexcept {
+    return _vec.capacity();
+}
+
+bool FiguresVector::empty() const noexcept {
+    return _vec.empty();
+}
