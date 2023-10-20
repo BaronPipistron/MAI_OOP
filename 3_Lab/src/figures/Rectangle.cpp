@@ -128,7 +128,9 @@ bool Rectangle::check_rectangle(const Point& first, const Point& second,
 namespace figures {
 
 std::istream& operator>>(std::istream& is, Rectangle& rectangle) {
-    is >> rectangle._left_bottom >> rectangle._right_bottom >> rectangle._left_top >> rectangle._right_top;
+    Point left_bottom, right_bottom, left_top, right_top;
+    is >> left_bottom >> right_bottom >> left_top >> right_top;
+    rectangle = Rectangle(left_bottom, right_bottom, left_top, right_top);
     return is; 
 }
 

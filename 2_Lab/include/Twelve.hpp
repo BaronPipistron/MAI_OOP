@@ -22,7 +22,7 @@ public:
     Twelve(Twelve&&) noexcept;
     virtual ~Twelve() noexcept = default;
 
-    Twelve& operator=(const Twelve) noexcept;
+    Twelve& operator=(const Twelve&) noexcept;
     Twelve& operator=(Twelve&&) noexcept;
 
     size_t bit_depth_of_num() const noexcept;

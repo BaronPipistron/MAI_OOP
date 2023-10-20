@@ -42,7 +42,7 @@ Twelve::Twelve(Twelve&& other) noexcept {
     this->_duodecimal_number = std::move(other._duodecimal_number);
 }
 
-Twelve& Twelve::operator=(const Twelve other) noexcept {
+Twelve& Twelve::operator=(const Twelve& other) noexcept {
     if (this == &other) return *this;
 
     this->_duodecimal_number = other._duodecimal_number;
@@ -139,6 +139,7 @@ Twelve& Twelve::operator+=(const Twelve& other) noexcept {
     }
     
     if (carry == 1) this->_duodecimal_number.push_back('1');
+    remove_leading_zeros();
     return *this;
 }
 

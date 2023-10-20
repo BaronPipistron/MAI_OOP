@@ -13,6 +13,12 @@ using namespace figures;
 int main() {
     FiguresVector figures_vector;
 
+    Rectangle* rect = new Rectangle;
+    std::cout << "Input rectangle coordinates" << std::endl;
+    std::cin >> *rect;
+    std::cout << *rect << std::endl;
+    figures_vector.push_back(static_cast<Figure*>(rect));
+
     Rectangle* rectangle_ptr = new Rectangle(5, 3);
     Square* square_ptr = new Square(10);
     Trapeze* trapeze_ptr = new Trapeze(1, 3, 5);
