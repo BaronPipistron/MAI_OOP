@@ -45,6 +45,11 @@ make build
 make run
 ```
 
+#### Run point tests
+```
+make point-tests
+```
+
 #### Run rectangle tests:
 ```
 make rectangle-tests

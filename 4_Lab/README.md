@@ -61,6 +61,11 @@ make run
 make run-tests
 ```
 
+#### Run point tests
+```
+make point-tests
+```
+
 #### Run rectangle tests:
 ```
 make rectangle-tests
