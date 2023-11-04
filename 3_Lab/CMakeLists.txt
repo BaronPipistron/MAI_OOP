@@ -44,7 +44,7 @@ target_link_libraries(${PROJECT_NAME}_exe ${PROJECT_NAME}_lib)
 #DOWNLOAD AND ADD GOOGLETEST TO BUILD
 #
 
-configure_file(configs/CMakeLists.txt.gtest.in googletest-download/CMakeLists.txt)
+configure_file(../configs/CMakeLists.txt.gtest.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
           RESULT_VARIABLE result
           WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download)

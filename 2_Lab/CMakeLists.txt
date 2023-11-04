@@ -32,7 +32,7 @@ set_target_properties(${PROJECT_NAME}_exe PROPERTIES
 add_dependencies(${PROJECT_NAME}_exe ${PROJECT_NAME}_lib)
 target_link_libraries(${PROJECT_NAME}_exe ${PROJECT_NAME}_lib)
 
-configure_file(CMakeLists.txt.gtest.in googletest-download/CMakeLists.txt)
+configure_file(../configs/CMakeLists.txt.gtest.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
                 RESULT_VARIABLE result
                 WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download)

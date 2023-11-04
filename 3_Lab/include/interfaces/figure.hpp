@@ -18,7 +18,6 @@ public:
     virtual double calculate_area() const = 0;
 
     virtual operator double() const = 0;
-    virtual bool operator==(const Figure&) const = 0;
 };
 
 }; // namespace figures
