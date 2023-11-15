@@ -1,4 +1,4 @@
-#include "../include/vector.h"
+#include "../../include/containers/vector.h"
 
 using namespace containers;
 
@@ -54,7 +54,7 @@ vector<T, Allocator>::vector(const vector<T, Allocator>& other) noexcept :
     T* new_data = AllocatorTraits::allocate(_allocator, _capacity);
 
     try {
-        std::uninitialized_copy(other.begin(), other.end(), new_data);
+        std::uninitialized_copy(other._data, other._data + other._size, new_data);
     } catch(...) {
         AllocatorTraits::deallocate(_allocator, new_data, _capacity);
         throw;
@@ -84,7 +84,7 @@ vector<T, Allocator>& vector<T, Allocator>::operator=(const vector<T, Allocator>
     this->_data = AllocatorTraits::allocate(_allocator, _capacity);
 
     try {
-        std::uninitialized_copy(other.begin(), other.end(), _data);
+        std::uninitialized_copy(other._data, other._data + other._size, _data);
     } catch(...) {
         AllocatorTraits::deallocate(_allocator, _data, _capacity);
         throw;
@@ -128,7 +128,7 @@ void vector<T, Allocator>::reserve(const size_t new_capacity) {
 
     T* new_data = AllocatorTraits::allocate(_allocator, new_capacity);
     try {
-        std::uninitialized_copy(begin(), end(), new_data);
+        std::uninitialized_copy(_data, _data + _size, new_data);
     } catch(...) {
         AllocatorTraits::deallocate(_allocator, new_data, new_capacity);
         throw;
@@ -201,6 +201,23 @@ void vector<T, Allocator>::pop_back() noexcept {
 
     --_size;
     _data[_size].~T();
+}
+
+template <class T, class Allocator>
+void vector<T, Allocator>::erase(const size_t index) {
+    if (index >= _size) throw std::range_error("Index out of range");
+    if (_size == 0) return;
+
+    if (index == _size - 1) {
+        pop_back();
+        return;
+    }
+
+    _data[index].~T();
+    for (size_t i = index; i != _size - 1; ++i) {
+        _data[i] = _data[i + 1];
+    }
+    pop_back();
 }
 
 template <class T, class Allocator>
@@ -293,8 +310,6 @@ const T& vector<T, Allocator>::back() const {
     return _data[_size - 1];
 }
 
-// TODO begin, end
-
 template <class T, class Allocator>
 bool vector<T, Allocator>::empty() const noexcept {
     return (_size == 0);
@@ -325,31 +340,9 @@ vector<T, Allocator>::iterator::iterator(T* ptr):
 }
 
 template <class T, class Allocator>
-vector<T, Allocator>::iterator::iterator(const iterator& other) noexcept :
+vector<T, Allocator>::iterator::iterator(const iterator& other):
     _ptr(other._ptr)
-{
-}
-
-template <class T, class Allocator>
-vector<T, Allocator>::iterator::iterator(iterator&& other) noexcept :
-    _ptr(std::move(other._ptr))
-{
-}
-
-template <class T, class Allocator>
-vector<T, Allocator>::iterator&  vector<T, Allocator>::iterator::operator=(const iterator& other) noexcept {
-    if (this = &other) return *this;
-
-    this->_ptr = other._ptr;
-    return *this;
-}
-
-template <class T, class Allocator>
-vector<T, Allocator>::iterator&  vector<T, Allocator>::iterator::operator=(iterator&& other) noexcept {
-    if (this = &other) return *this;
-
-    this->_ptr = std::move(other._ptr);
-    return *this;
+{ 
 }
 
 template <class T, class Allocator>
@@ -363,18 +356,61 @@ const T& vector<T, Allocator>::iterator::operator*() const noexcept {
 }
 
 template <class T, class Allocator>
-vector<T, Allocator>::iterator& vector<T, Allocator>::iterator::operator+=(const int64_t number) {
-    if (number >= _size) {
-        throw std::range_error("Out of vector range");
-    }
+vector<T, Allocator>::iterator& vector<T, Allocator>::iterator::operator++() {
+    this->_ptr += 1;
+    return *this;
 }
 
 template <class T, class Allocator>
-bool vector<T, Allocator>::iterator::operator==(const iterator& other) const noexcept {
+vector<T, Allocator>::iterator& vector<T, Allocator>::iterator::operator--() {
+    this->_ptr -= 1;
+    return *this;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator vector<T, Allocator>::iterator::operator++(int) {
+    iterator tmp(this->_ptr);
+    this->_ptr += 1;
+    return *tmp;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator vector<T, Allocator>::iterator::operator--(int) {
+    iterator tmp(this->_ptr);
+    this->_ptr -= 1;
+    return *tmp;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator& vector<T, Allocator>::iterator::operator+=(const int64_t number) {
+    this->_ptr += number;
+    return *this;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator& vector<T, Allocator>::iterator::operator-=(const int64_t number) {
+    this->_ptr -= number;
+    return *this;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator vector<T, Allocator>::iterator::operator+(const int64_t number) const {
+    iterator sum(this->_ptr);
+    return sum += number;
+}
+
+template <class T, class Allocator>
+vector<T, Allocator>::iterator vector<T, Allocator>::iterator::operator-(const int64_t number) const {
+    iterator sum(this->_ptr);
+    return sum -= number;
+}
+
+template <class T, class Allocator>
+bool vector<T, Allocator>::iterator::operator==(const vector<T, Allocator>::iterator& other) const noexcept {
     return (this->_ptr == other._ptr);
 }
 
 template <class T, class Allocator>
-bool vector<T, Allocator>::iterator::operator!=(const iterator& other) const noexcept {
+bool vector<T, Allocator>::iterator::operator!=(const vector<T, Allocator>::iterator& other) const noexcept {
     return !(this->_ptr == other._ptr);
 }

@@ -58,7 +58,7 @@ make run
 
 #### Run all tests:
 ```
-make run-tests
+make tests
 ```
 
 #### Run point tests
@@ -79,9 +79,4 @@ make square-tests
 #### Run trapeze tests:
 ```
 make trapeze-tests
-```
-
-### Run vector tests:
-```
-make vector-tests
 ```

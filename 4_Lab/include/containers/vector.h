@@ -18,7 +18,7 @@ public:
     vector();
     vector(Allocator&);
     vector(const size_t);
-    explicit vector(const size_t, const T& = T());
+    vector(const size_t, const T& = T());
     vector(const std::initializer_list<T>&);
     vector(const vector<T, Allocator>&) noexcept;
     vector(vector<T, Allocator>&&) noexcept;
@@ -28,12 +28,13 @@ public:
     virtual ~vector() noexcept;
 
     void reserve(const size_t);
-    explicit void resize(const size_t, const T& = T());
+    void resize(const size_t, const T& = T());
     void shrink_to_fit();
     void clear();
 
-    explicit void push_back(const T&);
+    void push_back(const T&);
     void pop_back() noexcept;
+    void erase(const size_t);
 
     template <class... Args>
     void emplace_back(const Args&...);
@@ -50,9 +51,6 @@ public:
     [[nodiscard]] const T& front() const;
     [[nodiscard]] const T& back() const;
 
-    iterator begin() const;
-    iterator end() const;
-
     bool empty() const noexcept;
     bool operator==(const vector<T, Allocator>&) const noexcept;
     bool operator!=(const vector<T, Allocator>&) const noexcept;
@@ -64,27 +62,23 @@ public:
         public:
             iterator() = delete;
             iterator(T*);
-            iterator(const iterator&) noexcept;
-            iterator(iterator&&) noexcept;
-            iterator& operator=(const iterator&) noexcept;
-            iterator& operator=(iterator&&) noexcept;
-
-            virtual ~iterator() noexcept = default;
+            iterator(const iterator&);
 
             T& operator*() noexcept;
             const T& operator*() const noexcept;
 
-            iterator& operator+=(const int64_t);
-            iterator& operator-=(const int64_t);
             iterator& operator++();
             iterator& operator--();
             iterator operator++(int);
             iterator operator--(int);
-            [[nodiscard]] iterator operator+(const int64_t);
-            [[nodiscard]] iterator operator-(const int64_t);
+            iterator& operator+=(const int64_t);
+            iterator& operator-=(const int64_t);
+            iterator operator+(const int64_t) const;
+            iterator operator-(const int64_t) const;
 
-            bool operator==(const iterator&) const noexcept;
-            bool operator!=(const iterator&) const noexcept;
+            bool operator==(const vector<T, Allocator>::iterator&) const noexcept;
+            bool operator!=(const vector<T, Allocator>::iterator&) const noexcept;
+            
     }; // class iterator
 };
 
