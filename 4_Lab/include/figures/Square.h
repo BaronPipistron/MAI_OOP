@@ -44,7 +44,12 @@ public:
     friend std::ostream& operator<<(std::ostream&, const Square<U>&);
 
 private:
-    bool check_square(const Point<T>&, const Point<T>&, const Point<T>&, const Point<T>&) const noexcept;
+    bool check_square(
+                      const Point<T>&, 
+                      const Point<T>&, 
+                      const Point<T>&, 
+                      const Point<T>&
+                      ) const noexcept;
 };
 
 }; // namespace figures

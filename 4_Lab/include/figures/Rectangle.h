@@ -47,7 +47,12 @@ public:
     friend std::ostream& operator<<(std::ostream&, const Rectangle<U>&);
 
 private:
-    bool check_rectangle(const Point<T>&, const Point<T>&, const Point<T>&, const Point<T>&) const noexcept;
+    bool check_rectangle(
+                         const Point<T>&, 
+                         const Point<T>&, 
+                         const Point<T>&, 
+                         const Point<T>&
+                         ) const noexcept;
 };
 
 }; // namespace figures
