@@ -1,4 +1,4 @@
-.PHONY: build run tests point-tests rectangle-tests square-tests trapeze-tests  clean
+.PHONY: build run tests point-tests rectangle-tests square-tests trapeze-tests vector-tests clean
 
 build:
 	mkdir -p build
@@ -12,6 +12,7 @@ tests:
 	./build/*_rectangle_tests
 	./build/*_square_tests
 	./build/*_trapeze_tests
+	./build/*_vector_tests
 
 point-tests:
 	./build/*_point_tests
@@ -24,6 +25,9 @@ square-tests:
 
 trapeze-tests:
 	./build/*_trapeze_tests
+
+vector-tests:
+	./build/*_vector_tests
 
 clean:
 	rm -rf ./build/

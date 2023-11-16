@@ -135,3 +135,22 @@ target_include_directories(${PROJECT_NAME}_trapeze_tests PRIVATE
 
 add_dependencies(${PROJECT_NAME}_trapeze_tests ${PROJECT_NAME}_lib)
 target_link_libraries(${PROJECT_NAME}_trapeze_tests ${PROJECT_NAME}_lib gtest_main)
+
+#
+#VECTOR TESTS
+#
+
+add_executable(${PROJECT_NAME}_vector_tests
+               ${CMAKE_CURRENT_SOURCE_DIR}/tests/vector_tests.cpp)
+
+set_target_properties(${PROJECT_NAME}_vector_tests PROPERTIES
+                      CXX_STANDARD 20
+                      CXX_STANDARD_REQUIRED YES)
+
+target_include_directories(${PROJECT_NAME}_vector_tests PRIVATE
+                           "${PROJECT_SOURCE_DIR}/src"
+                           "${CMAKE_CURRENT_BINARY_DIR}/googletest-src"
+                           "${CMAKE_CURRENT_BINARY_DIR}/googletest-src/include")
+
+add_dependencies(${PROJECT_NAME}_vector_tests ${PROJECT_NAME}_lib)
+target_link_libraries(${PROJECT_NAME}_vector_tests ${PROJECT_NAME}_lib gtest_main)
