@@ -33,7 +33,7 @@ int main() {
 
     std::shared_ptr<rectangle> rectangle_ptr = std::make_shared<rectangle>(5, 3);
     std::shared_ptr<square> square_ptr = std::make_shared<square>(10);
-    std::shared_ptr<trapeze> trapeze_ptr = std::make_shared<trapeze>(1, 3, 5);
+    std::shared_ptr<trapeze> trapeze_ptr = std::make_shared<trapeze>(1, 3, 5);   
 
     figures_vector.push_back(rectangle_ptr);
     figures_vector.push_back(square_ptr);
