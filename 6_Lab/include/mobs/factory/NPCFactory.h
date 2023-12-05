@@ -11,8 +11,8 @@ namespace mobs {
 
 class NPCFactory final {
   public:
-    static std::shared_ptr<NPC> create_NPC(NPCType) noexcept;
-
+    static std::shared_ptr<NPC> create_NPC(NPCType, const int64_t, const int64_t) noexcept;
+    static set_t load_NPC(const std::string&) noexcept;
 };
 
 }; // namespace mobs
