@@ -8,3 +8,4 @@ run:
 	./build/*_exe
 
 tests:
+	./build/*_game_tests

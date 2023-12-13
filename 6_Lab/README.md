@@ -50,3 +50,7 @@ make build
 ```
 make run
 ```
+#### Run all tests:
+```
+make tests
+```

@@ -7,7 +7,6 @@ LogObserver::LogObserver() :
 {
 }
 
-void LogObserver::kill_report(const mobs::NPC& attacker, const mobs::NPC& defender)
-{
+void LogObserver::report_killed(const NPC& attacker, const NPC& defender) {
     _os << defender << " | killed by | " << attacker << std::endl;
 }

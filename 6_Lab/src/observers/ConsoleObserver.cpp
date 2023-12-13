@@ -2,7 +2,6 @@
 
 using namespace observers;
 
-void ConsoleObserver::kill_report(const mobs::NPC& attacker, const mobs::NPC& defender)
-{
+void ConsoleObserver::report_killed(const NPC& attacker, const NPC& defender) {
     std::cout << defender << " | killed by | " << attacker << std::endl;
 }
