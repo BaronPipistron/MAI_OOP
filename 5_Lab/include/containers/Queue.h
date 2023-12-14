@@ -40,6 +40,11 @@ class Queue final {
 
     virtual ~Queue() noexcept;
 
+    iterator begin();
+    iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
+
     reference front();
     reference back();
     const_reference front() const;

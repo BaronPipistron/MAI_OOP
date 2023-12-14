@@ -29,9 +29,9 @@ class IObserver {
 class NPC {
   protected:
     NPCType _type;
+    std::string _name;
     int64_t _x { 0 }; 
     int64_t _y { 0 };
-    std::string _name;
     bool _alive;
     std::vector<std::shared_ptr<observers::IObserver>> _observers;
 

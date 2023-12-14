@@ -71,6 +71,30 @@ Queue<_Tp, _Alloc>::~Queue() noexcept
 }
 
 template <class _Tp, class _Alloc>
+typename Queue<_Tp, _Alloc>::iterator Queue<_Tp, _Alloc>::begin() 
+{
+    return QueueIterator(_head);
+}
+
+template <class _Tp, class _Alloc>
+typename Queue<_Tp, _Alloc>::iterator Queue<_Tp, _Alloc>::end() 
+{
+    return QueueIterator(_tail);
+}
+
+template <class _Tp, class _Alloc>
+typename Queue<_Tp, _Alloc>::const_iterator Queue<_Tp, _Alloc>::begin() const
+{
+    return QueueIterator(_head);
+}
+
+template <class _Tp, class _Alloc>
+typename Queue<_Tp, _Alloc>::const_iterator Queue<_Tp, _Alloc>::end() const
+{
+    return QueueIterator(_tail);
+}
+
+template <class _Tp, class _Alloc>
 typename Queue<_Tp, _Alloc>::reference Queue<_Tp, _Alloc>::front()
 {
     return _head->_data;

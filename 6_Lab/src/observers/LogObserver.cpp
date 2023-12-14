@@ -3,7 +3,7 @@
 using namespace observers;
 
 LogObserver::LogObserver() :
-    _os("../../logs/battle_logs.txt")
+    _os(std::ofstream("logs/battle_logs.txt"))
 {
 }
 
