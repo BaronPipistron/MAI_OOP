@@ -1,4 +1,4 @@
-make_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
 project(Lab7)
 
 add_compile_options(-Wall -g)
